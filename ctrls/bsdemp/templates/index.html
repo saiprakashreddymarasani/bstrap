@@ -1,0 +1,40 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "bsdemp/style.css" %}"/>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet'  type='text/css'>
+
+
+# included content delivery network
+<nav class="navbar navbar-inverse">
+    <div class=" container-fluid">
+        <div class ="navbar-header">
+
+            <button type="button" class="navbar-toggle" data-toggle="colapse " data-target ="topnavbar"></button>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+
+            <a class="navbar-brand" href="{%  url 'bsdemp:index'%}"> Data</a>
+
+        </div>
+
+    </div>
+</nav>
+{% if all_employees %}
+    <h1> here we go, a list of your employees</h1>
+    <ul>
+        {% for employee in all_employees %}
+
+        <li>
+            <a href = "{% url 'bsdemp:detail' employee.id %}"> {{ employee.name }} </a>
+        </li>
+        {% endfor %}
+</ul>
+
+{% else %}
+
+<h3> you company dont have any employees</h3>
+
+{% endif %}
